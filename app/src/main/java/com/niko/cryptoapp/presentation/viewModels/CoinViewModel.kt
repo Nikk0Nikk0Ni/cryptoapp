@@ -40,10 +40,7 @@ class CoinViewModel(application: Application) : ViewModel() {
 
     fun loadData() {
         val disposable =
-            getCoinList().map {
-                it.data?.map { coinDetailModel -> coinDetailModel.coinModelInfo?.name }
-                    ?.joinToString(",").toString()
-            }.flatMap {
+            getCoinList().flatMap {
                 getFullPriceList(it)
             }.delaySubscription(10,TimeUnit.SECONDS)
                 .repeat()

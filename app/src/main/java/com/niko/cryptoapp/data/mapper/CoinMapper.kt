@@ -13,8 +13,10 @@ import com.niko.cryptoapp.domain.models.CoinPriceInfoRawDataModel
 import com.niko.cryptoapp.domain.models.CoinPriceModel
 
 object CoinMapper {
-    fun mapCoinListToCoinListModel(coinList: CoinList): CoinListModel {
-        return CoinListModel(mapCoinListDetailsToCoinListDetailsModel(coinList.data))
+    fun mapCoinListToString(coinList: CoinList): String {
+        val coinListModel = CoinListModel(mapCoinListDetailsToCoinListDetailsModel(coinList.data))
+        return coinListModel.data?.map { coinDetailModel -> coinDetailModel.coinModelInfo?.name }
+            ?.joinToString(",").toString()
     }
 
     fun mapCoinDetailsToCoinDetailsModel(coinDetails: CoinDetails): CoinDetailsModel {

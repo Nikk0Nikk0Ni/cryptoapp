@@ -14,9 +14,9 @@ import io.reactivex.rxjava3.core.Single
 
 class CoinRepositoryImplementation(application: Application) : CoinRepository {
     private val db = AppDatabase.getInstance(application).getDao()
-    override fun getCoinList(): Single<CoinListModel> {
+    override fun getCoinList(): Single<String> {
         return ApiFactory.api_service.getCoinList()
-            .map { CoinMapper.mapCoinListToCoinListModel(it) }
+            .map { CoinMapper.mapCoinListToString(it) }
     }
 
     override fun getFullPriceList(crypovalutes: String): Single<List<CoinPriceModel>> {

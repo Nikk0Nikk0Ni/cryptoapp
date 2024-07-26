@@ -7,7 +7,7 @@ import com.niko.cryptoapp.domain.models.CoinPriceModel
 import io.reactivex.rxjava3.core.Single
 
 interface CoinRepository {
-    fun getCoinList(): Single<CoinListModel>
+    fun getCoinList(): Single<String>
     fun getFullPriceList(crypovalutes: String): Single<List<CoinPriceModel>>
     fun getPriceListFromDB(): LiveData<List<CoinPriceModel>>
     fun insertPriceListToDB(coinPriceModel: List<CoinPriceModel>)
