@@ -19,9 +19,9 @@ class CoinRepositoryImplementation(application: Application) : CoinRepository {
             .map { CoinMapper.mapCoinListToCoinListModel(it) }
     }
 
-    override fun getFullPriceList(crypovalutes: String): Single<CoinPriceInfoRawDataModel> {
+    override fun getFullPriceList(crypovalutes: String): Single<List<CoinPriceModel>> {
         return ApiFactory.api_service.getFullPriceList(crypovalutes)
-            .map { CoinMapper.coinPriceInfoRawDatatToCoinPriceInfoRawDataModel(it) }
+            .map { CoinMapper.coinPriceInfoRawDataToListCoinPriceModel(it) }
     }
 
     override fun getPriceListFromDB(): LiveData<List<CoinPriceModel>> {

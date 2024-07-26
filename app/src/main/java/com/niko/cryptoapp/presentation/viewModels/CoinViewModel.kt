@@ -45,8 +45,6 @@ class CoinViewModel(application: Application) : ViewModel() {
                     ?.joinToString(",").toString()
             }.flatMap {
                 getFullPriceList(it)
-            }.map {
-                getPriceModelFromRawDataModel(it)
             }.delaySubscription(10,TimeUnit.SECONDS)
                 .repeat()
                 .retry()
@@ -58,21 +56,6 @@ class CoinViewModel(application: Application) : ViewModel() {
                         Log.e("AUF", it.message.toString())
                     })
         compositeDisposable.add(disposable)
-    }
-
-    private fun getPriceModelFromRawDataModel(coinPriceInfoRawDataModel: CoinPriceInfoRawDataModel):List<CoinPriceModel>{
-        val result = mutableListOf<CoinPriceModel>()
-        val jsonObject = coinPriceInfoRawDataModel.coinPriceInfoJsonObject ?: return result
-        val coinKeySet = jsonObject.keySet()
-        for(coinKey in coinKeySet){
-            val currentJson = jsonObject.getAsJsonObject(coinKey)
-            val currencyKeySet = currentJson.keySet()
-            for(currencyKey in currencyKeySet){
-                val priceInfo = Gson().fromJson(currentJson.getAsJsonObject(currencyKey),CoinPriceModel::class.java)
-                result.add(priceInfo)
-            }
-        }
-        return result
     }
 
 

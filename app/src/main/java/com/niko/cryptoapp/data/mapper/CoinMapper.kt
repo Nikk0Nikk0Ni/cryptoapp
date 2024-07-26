@@ -1,5 +1,6 @@
 package com.niko.cryptoapp.data.mapper
 
+import com.google.gson.Gson
 import com.niko.cryptoapp.data.database.entity.CoinPriceEntity
 import com.niko.cryptoapp.data.network.dto.Coin
 import com.niko.cryptoapp.data.network.dto.CoinDetails
@@ -30,8 +31,23 @@ object CoinMapper {
         )
     }
 
-    fun coinPriceInfoRawDatatToCoinPriceInfoRawDataModel(coinPriceInfoRawData: CoinPriceInfoRawData): CoinPriceInfoRawDataModel {
-        return CoinPriceInfoRawDataModel(coinPriceInfoRawData.coinPriceInfoJsonObject)
+    fun coinPriceInfoRawDataToListCoinPriceModel(coinPriceInfoRawData: CoinPriceInfoRawData): List<CoinPriceModel> {
+        return getPriceModelFromRawDataModel(CoinPriceInfoRawDataModel(coinPriceInfoRawData.coinPriceInfoJsonObject))
+    }
+
+    private fun getPriceModelFromRawDataModel(coinPriceInfoRawDataModel: CoinPriceInfoRawDataModel):List<CoinPriceModel>{
+        val result = mutableListOf<CoinPriceModel>()
+        val jsonObject = coinPriceInfoRawDataModel.coinPriceInfoJsonObject ?: return result
+        val coinKeySet = jsonObject.keySet()
+        for(coinKey in coinKeySet){
+            val currentJson = jsonObject.getAsJsonObject(coinKey)
+            val currencyKeySet = currentJson.keySet()
+            for(currencyKey in currencyKeySet){
+                val priceInfo = Gson().fromJson(currentJson.getAsJsonObject(currencyKey),CoinPriceModel::class.java)
+                result.add(priceInfo)
+            }
+        }
+        return result
     }
 
     fun coinPriceEntityToCoinPriceModel(cpe: CoinPriceEntity): CoinPriceModel {
