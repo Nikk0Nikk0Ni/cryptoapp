@@ -31,10 +31,12 @@ class CoinPriceListActivity : AppCompatActivity() {
             startActivity(CoinDetailActivity.newIntent(this,it.fromSymbol))
         }
         binding.coinListRecyclewView.adapter = adapter
+        binding.coinListRecyclewView.itemAnimator = null
         viewModel.getPriceList().observe(this) {
             adapter.submitList(it)
         }
     }
+
 
     override fun onDestroy() {
         super.onDestroy()

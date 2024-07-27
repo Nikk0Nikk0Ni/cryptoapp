@@ -29,11 +29,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     buildFeatures{
         viewBinding = true
@@ -42,23 +42,22 @@ android {
 
 dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
-    implementation("androidx.activity:activity:1.8.0")
+    implementation("androidx.activity:activity:1.9.1")
     kapt("androidx.room:room-compiler:2.6.1")
-    implementation("androidx.room:room-rxjava3:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
 
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+
+
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     implementation("com.squareup.picasso:picasso:2.71828")
 
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.3")
-    implementation("androidx.lifecycle:lifecycle-reactivestreams-ktx:2.8.3")
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
 
-    implementation("io.reactivex.rxjava3:rxjava:3.1.8")
-    implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.4")
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

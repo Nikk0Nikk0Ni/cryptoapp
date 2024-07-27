@@ -2,13 +2,9 @@ package com.niko.cryptoapp.presentation.activity
 
 import android.content.Context
 import android.content.Intent
-import android.os.Build
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
@@ -54,12 +50,12 @@ class CoinDetailActivity : AppCompatActivity() {
     }
 
     private fun setCoinDetail(coin: CoinPriceModel) {
-        Picasso.get().load(coin.getFullImageUrl()).into(binding.coinImg)
+        Picasso.get().load(coin.imageUrl).into(binding.coinImg)
         binding.tvPrice.text = coin.price.toString()
         binding.tvMaxByDay.text = coin.highDay ?: "null"
         binding.tvMinByDay.text = coin.lowDay ?: "null"
         binding.tvLastDeal.text = coin.lastMarket ?: "null"
-        binding.tvLastUpdate.text = coin.getFormattedTime() ?: "null"
+        binding.tvLastUpdate.text = (coin.lastUpdate)
         binding.tvCoinName.text = coin.fromSymbol ?: "null"
         binding.tvValuteName.text = coin.toSymbol ?: "null"
     }

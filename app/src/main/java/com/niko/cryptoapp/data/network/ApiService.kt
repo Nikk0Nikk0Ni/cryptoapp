@@ -2,7 +2,6 @@ package com.niko.cryptoapp.data.network
 
 import com.niko.cryptoapp.data.network.dto.CoinList
 import com.niko.cryptoapp.data.network.dto.CoinPriceInfoRawData
-import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Query
@@ -10,17 +9,17 @@ import retrofit2.http.Query
 interface ApiService {
     @Headers("$HEADER_APIKEY: $API_KEY")
     @GET("top/totaltoptiervolfull")
-    fun getCoinList(
+    suspend fun getCoinList(
         @Query(QUERY_LIMIT) limitPerPage: Int = DEFAULT_LIMIT_PER_PAGE,
         @Query(QUERY_TSYM) currency: String = DEFAULT_CURRENCY
-    ): Single<CoinList>
+    ): CoinList
 
     @Headers("$HEADER_APIKEY: $API_KEY")
     @GET("pricemultifull")
-    fun getFullPriceList(
+    suspend fun getFullPriceList(
         @Query(QUERY_FSYMS) cryptovalutes: String,
         @Query(QUERY_TSYMS) currency: String = DEFAULT_CURRENCY
-    ): Single<CoinPriceInfoRawData>
+    ): CoinPriceInfoRawData
 
     companion object {
         private const val QUERY_LIMIT = "limit"
