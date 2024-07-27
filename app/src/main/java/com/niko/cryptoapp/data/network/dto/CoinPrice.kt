@@ -19,9 +19,9 @@ data class CoinPrice(
     @SerializedName("FLAGS")
     @Expose
     val flags: String? = null,
-    @SerializedName("LOSTMARKET")
+    @SerializedName("LASTMARKET")
     @Expose
-    val lostMarket: String? = null,
+    val lastMarket: String? = null,
     @SerializedName("PRICE")
     val price: Double? = null,
     @SerializedName("LASTUPDATE")

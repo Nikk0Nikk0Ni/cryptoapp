@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.niko.cryptoapp.data.database.entity.CoinPriceEntity
 
-@Database(entities = [CoinPriceEntity::class], version = 4)
+@Database(entities = [CoinPriceEntity::class], version = 5)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun getDao() : CoinPriceInfoDao
     companion object {

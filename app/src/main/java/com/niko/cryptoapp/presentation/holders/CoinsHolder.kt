@@ -10,10 +10,10 @@ import com.squareup.picasso.Picasso
 class CoinsHolder(private val view: View): RecyclerView.ViewHolder(view) {
     private val binding = CryptoItemLayoutBinding.bind(view)
     fun bind(coinPriceModel: CoinPriceModel, onClick: ((CoinPriceModel)->Unit)?){
-        Picasso.get().load(coinPriceModel.getFullImageUrl()).into(binding.coinIcon)
+        Picasso.get().load(coinPriceModel.imageUrl).into(binding.coinIcon)
         binding.tvCoinName.text = String.format(view.context.getString(R.string.coinName_currnecy),coinPriceModel.fromSymbol,coinPriceModel.toSymbol)
         binding.coinPrice.text = coinPriceModel.price.toString()
-        binding.lastTimeUpdate.text = String.format(view.context.getString(R.string.last_time_update),coinPriceModel.getFormattedTime())
+        binding.lastTimeUpdate.text = String.format(view.context.getString(R.string.last_time_update),coinPriceModel.lastUpdate)
         onClick?.let {
             itemView.setOnClickListener{
                 it(coinPriceModel)
