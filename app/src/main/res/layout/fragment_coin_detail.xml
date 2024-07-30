@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.activity.CoinDetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+
+    <ImageView
+        android:id="@+id/coinImg"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvCoinName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/purple"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/slash"
+        app:layout_constraintEnd_toStartOf="@id/slash"
+        app:layout_constraintTop_toTopOf="@id/slash"
+        tools:text="BTC" />
+
+    <TextView
+        android:id="@+id/slash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/slash"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/coinImg" />
+
+    <TextView
+        android:id="@+id/tvValuteName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/blue"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@id/slash"
+        app:layout_constraintStart_toEndOf="@id/slash"
+        app:layout_constraintTop_toTopOf="@id/slash"
+        tools:text="USD" />
+
+    <TextView
+        android:id="@+id/price"
+        style="@style/FinalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/price"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/slash" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        style="@style/EditTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:maxLength="10"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="@id/price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/price"
+        app:layout_constraintTop_toTopOf="@id/price"
+        tools:text="111" />
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/price" />
+
+    <TextView
+        android:id="@+id/maxByDay"
+        style="@style/FinalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/max_by_day"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line1" />
+
+    <TextView
+        android:id="@+id/tvMaxByDay"
+        style="@style/EditTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/green"
+        app:layout_constraintBottom_toBottomOf="@id/maxByDay"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="0.324156574685798786752143254365"
+        app:layout_constraintStart_toEndOf="@id/maxByDay"
+        app:layout_constraintTop_toTopOf="@id/maxByDay" />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/maxByDay" />
+
+    <TextView
+        android:id="@+id/minByDay"
+        style="@style/FinalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/min_by_day"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line2" />
+
+    <TextView
+        android:id="@+id/tvMinByDay"
+        style="@style/EditTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/red"
+        app:layout_constraintBottom_toBottomOf="@id/minByDay"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="0.124156574685798786752143254365"
+        app:layout_constraintStart_toEndOf="@id/minByDay"
+        app:layout_constraintTop_toTopOf="@id/minByDay" />
+
+    <View
+        android:id="@+id/line3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/minByDay" />
+
+    <TextView
+        android:id="@+id/lastDeal"
+        style="@style/FinalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/last_deal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line3" />
+
+    <TextView
+        android:id="@+id/tvLastDeal"
+        style="@style/EditTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/lastDeal"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Bitix"
+        app:layout_constraintStart_toEndOf="@id/lastDeal"
+        app:layout_constraintTop_toTopOf="@id/lastDeal" />
+
+    <View
+        android:id="@+id/line4"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lastDeal" />
+
+    <TextView
+        android:id="@+id/lastUpdate"
+        style="@style/FinalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/last_update"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/line4" />
+
+    <TextView
+        android:id="@+id/tvLastUpdate"
+        style="@style/EditTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/lastUpdate"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="21:05:23"
+        app:layout_constraintStart_toEndOf="@id/lastUpdate"
+        app:layout_constraintTop_toTopOf="@id/lastUpdate" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
