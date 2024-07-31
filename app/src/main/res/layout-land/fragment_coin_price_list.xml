@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.activity.CoinPriceListActivity">
+    tools:listitem="@layout/crypto_item_layout"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+    tools:context=".presentation.activity.MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/coinListRecyclewView"
@@ -14,25 +16,23 @@
         tools:listitem="@layout/crypto_item_layout"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/middleGuidline"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:context=".presentation.activity.CoinPriceListActivity" />
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        tools:context=".presentation.activity.MainActivity" >
+
+    </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/middleGuidline"
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5"/>
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
+        android:id="@+id/fragmentContainerDetail"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintStart_toEndOf="@id/middleGuidline"
+        app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

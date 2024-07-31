@@ -1,23 +1,17 @@
 package com.niko.cryptoapp.presentation.fragments
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import com.niko.cryptoapp.R
-import com.niko.cryptoapp.databinding.ActivityCoinDetailBinding
 import com.niko.cryptoapp.databinding.FragmentCoinDetailBinding
 import com.niko.cryptoapp.domain.models.CoinPriceModel
-import com.niko.cryptoapp.presentation.activity.CoinDetailActivity
 import com.niko.cryptoapp.presentation.viewModels.CoinViewModel
 import com.niko.cryptoapp.presentation.viewModelsFactory.CoinVMFactory
 import com.squareup.picasso.Picasso
@@ -76,6 +70,19 @@ class CoinDetailFragment : Fragment() {
             return CoinDetailFragment().apply {
                 arguments = bundleOf(COIN_NAME to coinName)
             }
+        }
+        fun navigate(fragment: Fragment,fromSymbol: String?){
+            fragment.findNavController().navigate(
+                R.id.coinDetailFragment,
+                bundleOf(COIN_NAME to fromSymbol),
+                navOptions {
+                    anim {
+                        enter = androidx.navigation.ui.R.anim.nav_default_enter_anim
+                        popEnter = androidx.navigation.ui.R.anim.nav_default_pop_enter_anim
+                    }
+                    popUpTo(R.id.coinPriceListFragment)
+                }
+            )
         }
     }
 }
