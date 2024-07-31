@@ -43,6 +43,8 @@ android {
 dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
     implementation("androidx.activity:activity:1.9.1")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+    implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     kapt("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
 
