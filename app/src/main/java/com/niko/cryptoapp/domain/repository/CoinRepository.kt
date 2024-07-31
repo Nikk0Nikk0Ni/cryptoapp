@@ -6,5 +6,5 @@ import com.niko.cryptoapp.domain.models.CoinPriceModel
 interface CoinRepository {
     fun getPriceListFromDB(): LiveData<List<CoinPriceModel>>
     fun getCoinInfoFromDB(coinName: String): LiveData<CoinPriceModel>
-    suspend fun loadData()
+    fun loadData()
 }

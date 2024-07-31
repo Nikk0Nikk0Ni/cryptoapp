@@ -18,9 +18,7 @@ class CoinViewModel(application: Application) : ViewModel() {
     private val loadData = LoadData(repository)
 
     init {
-        viewModelScope.launch {
             loadData()
-        }
     }
 
     fun getPriceList(): LiveData<List<CoinPriceModel>> {
@@ -29,9 +27,5 @@ class CoinViewModel(application: Application) : ViewModel() {
 
     fun getCoinInfo(coinName: String): LiveData<CoinPriceModel>{
         return getCoinInfoFromDB(coinName)
-    }
-
-    override fun onCleared() {
-        super.onCleared()
     }
 }
